@@ -1,0 +1,5 @@
+workareaRelative = .
+rootcoredir = /cvmfs/atlas.cern.ch/repo/sw/ASG/AnalysisBase/2.4.18/RootCore
+rootcoreobj = obj
+rootcoreconf = x86_64-slc6-gcc49-opt
+release = --obj-release /cvmfs/atlas.cern.ch/repo/sw/ASG/AnalysisBase/2.4.18/RootCore
