@@ -1,0 +1,27 @@
+This package contains two simple examples of how to look at track related information.  The first TrackEfficiencyAnalysis is an EventLoop class that will measure the tracking efficiency for primary and secondary tracks.  The plots are defined in a struct (TrackEfficiencyHists) and written into an output file. This will work correctly on standard xAOD's.
+
+The second provides an example of how to access the detailed  (i.e. hit level information) inner detector.  This will only work with the extended xAOD's.
+
+
+How to compile and run the code
+
+#setup ATLAS
+setupATLAS
+#setup the analysis release
+rcsetup Base,2.0.11
+#checkout the package
+svn co $SVNPERF/CombPerf/Tracking/xAOD/TrackAnalysis ./TrackAnalysis
+
+#compile the code
+rc find_packages
+rc compile
+
+Then to run the efficiency analysis
+
+runTrackEfficiency
+
+to run the example code over the detailed xAOD execute
+
+runPixelClusterAnalysis
+
+
