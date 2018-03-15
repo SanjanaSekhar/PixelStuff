@@ -1318,7 +1318,7 @@ struct PixelClusterHists
       h_EtaInciIPl->Fill(etaInc);
       h_ToTVSLocalPhiIPl->Fill(phiInc,tot);
       h_ToTVSLocalEtaIPl->Fill(etaInc,tot);
-      h_ToTvsLocalXYIPl->Fill(etaInc,phiInc,tot);
+      h_ToTvsLocalXYIPl->Fill(localx,localy,tot);
    }else{
       //if ( phiInc > -0.6 && phiInc < 0.6 ) {
         h_ToTI3D->Fill(tot);
@@ -1343,7 +1343,7 @@ struct PixelClusterHists
       h_EtaInciI3D->Fill(etaInc);
       h_ToTVSLocalPhiI3D->Fill(phiInc,tot);
       h_ToTVSLocalEtaI3D->Fill(etaInc,tot);
-      h_ToTvsLocalXYI3D->Fill(etaInc,phiInc,tot);
+      h_ToTvsLocalXYI3D->Fill(localx,localy,tot);
    }
    h_phiVSphimod->Fill(phimod,phi);
  }
@@ -1402,7 +1402,7 @@ struct PixelClusterHists
           h_PullY1->Fill(pullY);
           h_ToTVSLocalPhiBL->Fill(phiInc,tot);
           h_ToTVSLocalEtaBL->Fill(etaInc,tot);
-          h_ToTvsLocalXYBL->Fill(etaInc,phiInc,tot);
+          h_ToTvsLocalXYBL->Fill(localx,localy,tot);
         }
         if(layer == 2){
 	  h_ResiX2->Fill(resiX);
@@ -1411,7 +1411,7 @@ struct PixelClusterHists
           h_PullY2->Fill(pullY);
           h_ToTVSLocalPhiL1->Fill(phiInc,tot);
           h_ToTVSLocalEtaL1->Fill(etaInc,tot);
-          h_ToTvsLocalXYL1->Fill(etaInc,phiInc,tot);
+          h_ToTvsLocalXYL1->Fill(localx,localy,tot);
         }
         if(layer == 3){
 	  h_ResiX3->Fill(resiX);
@@ -1420,7 +1420,7 @@ struct PixelClusterHists
           h_PullY3->Fill(pullY);
           h_ToTVSLocalPhiL2->Fill(phiInc,tot);
           h_ToTVSLocalEtaL2->Fill(etaInc,tot);
-          h_ToTvsLocalXYL2->Fill(etaInc,phiInc,tot);
+          h_ToTvsLocalXYL2->Fill(localx,localy,tot);
         }
       //}
       h_PhiInci->Fill(phiInc);
