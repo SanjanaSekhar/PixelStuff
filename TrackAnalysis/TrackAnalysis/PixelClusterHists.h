@@ -1052,10 +1052,10 @@ struct PixelClusterHists
  //std::cout << isfake << " , " << isgang << std::endl;
  if ( isfake || isgang ) Noise = true;
 
- if ( fabs(phiInc) > 0.60 && bec ==0 && layer == 0) Noise = true;
- if ( fabs(phiInc) > 0.30 && bec ==0 && layer == 1) Noise = true;
- if ( fabs(phiInc) > 0.50 && bec ==0 && layer == 2) Noise = true;
- if ( fabs(phiInc) > 0.50 && bec ==0 && layer == 3) Noise = true;
+ //if ( fabs(phiInc) > 0.60 && bec ==0 && layer == 0) Noise = true;
+ //if ( fabs(phiInc) > 0.30 && bec ==0 && layer == 1) Noise = true;
+ //if ( fabs(phiInc) > 0.50 && bec ==0 && layer == 2) Noise = true;
+ //if ( fabs(phiInc) > 0.50 && bec ==0 && layer == 3) Noise = true;
 
  if(!Noise) {
 
