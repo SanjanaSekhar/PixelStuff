@@ -3,6 +3,7 @@
 
 #include "TH1D.h"
 #include "TH2D.h"
+#include "TH3D.h"
 #include "TProfile.h"
 #include "TGraphAsymmErrors.h"
 #include "TMath.h"
