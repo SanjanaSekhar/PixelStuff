@@ -91,11 +91,24 @@ struct PixelClusterHists
   TH2D*  h_ToTVSLocalEtaL1;
   TH2D*  h_ToTVSLocalEtaL2;
 //=======SS===============
-  TH3D*  h_ToTvsLocalEtaPhiIPl;
-  TH3D*  h_ToTvsLocalEtaPhiI3D;
-  TH3D*  h_ToTvsLocalEtaPhiBL;
-  TH3D*  h_ToTvsLocalEtaPhiL1;
-  TH3D*  h_ToTvsLocalEtaPhiL2;
+  TH3D*  h_ToTvsLocalXYIPl;
+  TH3D*  h_ToTvsLocalXYI3D;
+  TH3D*  h_ToTvsLocalXYBL;
+  TH3D*  h_ToTvsLocalXYL1;
+  TH3D*  h_ToTvsLocalXYL2;
+
+  TH3D*  h_EtaSizevsLocalXYIPl;
+  TH3D*  h_EtaSizevsLocalXYI3D;
+  TH3D*  h_EtaSizevsLocalXYBL;
+  TH3D*  h_EtaSizevsLocalXYL1;
+  TH3D*  h_EtaSizevsLocalXYL2;
+
+  TH3D*  h_PhiSizevsLocalXYIPl;
+  TH3D*  h_PhiSizevsLocalXYI3D;
+  TH3D*  h_PhiSizevsLocalXYBL;
+  TH3D*  h_PhiSizevsLocalXYL1;
+  TH3D*  h_PhiSizevsLocalXYL2;
+
 //===========================
   TH1D* h_GlobalZ;
   TH1D* h_GlobalZIBL;
@@ -373,13 +386,26 @@ struct PixelClusterHists
     h_ToTVSLocalEtaBL   =  new TH2D( name + "PixelsToTVSLocalEtaBL", "ToT VS Eta Incidence BL; Eta Incidence [rad]; ToT; #Hits", 640, -1.6025, 1.597575,200, -0.5,199.5 );
     h_ToTVSLocalEtaL1   =  new TH2D( name + "PixelsToTVSLocalEtaL1", "ToT VS Eta Incidence L1; Eta Incidence [rad]; ToT; #Hits", 640, -1.6025, 1.597575,200, -0.5,199.5 );
     h_ToTVSLocalEtaL2   =  new TH2D( name + "PixelsToTVSLocalEtaL2", "ToT VS Eta Incidence L2; Eta Incidence [rad]; ToT; #Hits", 640, -1.6025, 1.597575,200, -0.5,199.5 );
-//===========SS=============================
-    h_ToTvsLocalEtaPhiIPl = new TH3D( name + "PixelsToTVSLocalEtaPhiIPl","ToT VS Eta Incidence VS Phi Incidence IBL Planar; Eta Incidence; Phi Incidence [rad]; ToT; #Hits", 640, -1.6025, 1.597575,200, -0.5,199.5, 200, -0.5,199.5 );
-    h_ToTvsLocalEtaPhiI3D = new TH3D( name + "PixelsToTVSLocalEtaPhiI3D","ToT VS Eta Incidence VS Phi Incidence IBL 3D; Eta Incidence; Phi Incidence [rad]; ToT; #Hits", 640, -1.6025, 1.597575,200, -0.5,199.5, 200, -0.5,199.5 );
-    h_ToTvsLocalEtaPhiBL = new TH3D( name + "PixelsToTVSLocalEtaPhiBL","ToT VS Eta Incidence VS Phi Incidence BL; Eta Incidence; Phi Incidence [rad]; ToT; #Hits", 640, -1.6025, 1.597575,200, -0.5,199.5, 200, -0.5,199.5 );
-    h_ToTvsLocalEtaPhiL1 = new TH3D( name + "PixelsToTVSLocalEtaPhiL1","ToT VS Eta Incidence VS Phi Incidence L1; Eta Incidence; Phi Incidence [rad]; ToT; #Hits", 640, -1.6025, 1.597575,200, -0.5,199.5, 200, -0.5,199.5 );
-    h_ToTvsLocalEtaPhiL2 = new TH3D( name + "PixelsToTVSLocalEtaPhiL2","ToT VS Eta Incidence VS Phi Incidence L2; Eta Incidence; Phi Incidence [rad]; ToT; #Hits", 640, -1.6025, 1.597575,200, -0.5,199.5, 200, -0.5,199.5 );
-//===========================================
+//===========SS==================================================================================================================================================================================================================
+    h_ToTvsLocalXYIPl = new TH3D( name + "PixelsToTVSLocalXYIPl","ToT VS LocalX VS LocalY IBL Planar; LocalX; LocalY; ToT; #Hits", 640, -1.6025, 1.597575,200, -100., 100., 200, -100.,100.);
+    h_ToTvsLocalXYI3D = new TH3D(name + "PixelsToTVSLocalXYI3D","ToT VS LocalX VS LocalY IBL 3D; LocalX; LocalY; ToT; #Hits", 640, -1.6025, 1.597575,200, -100., 100., 200, -100.,100.);
+    h_ToTvsLocalXYBL = new TH3D(name + "PixelsToTVSLocalXYBL","ToT VS LocalX VS LocalY BL; LocalX; LocalY; ToT; #Hits", 640, -1.6025, 1.597575,200, -100., 100., 200, -100.,100.);
+    h_ToTvsLocalXYL1 = new TH3D( name + "PixelsToTVSLocalXYL1","ToT VS LocalX VS LocalY L1; LocalX; LocalY; ToT; #Hits", 640, -1.6025, 1.597575,200, -100., 100., 200, -100.,100.);
+    h_ToTvsLocalXYL2 = new TH3D( name + "PixelsToTVSLocalXYL2","ToT VS LocalX VS LocalY L2; LocalX; LocalY; ToT; #Hits", 640, -1.6025, 1.597575,200, -100., 100., 200, -100.,100.);
+
+    h_EtaSizevsLocalXYIPl = new TH3D( name + "IBLPlanarEtaWidthVSLocalXY","Cluster Eta width IBL Planar VS Local X VS Local Y; Local X; Local Y; ClusterEtaWidth",20, -0.5, 19.5,200, -100., 100., 200, -100.,100. );
+    h_EtaSizevsLocalXYI3D = new TH3D( name + "IBL3DEtaWidthVSLocalXY","Cluster Eta width IBL 3D VS Local X VS Local Y; Local X; Local Y; ClusterEtaWidth",20, -0.5, 19.5,200, -100., 100., 200, -100.,100. );
+    h_EtaSizevsLocalXYBL = new TH3D( name + "BLEtaWidthVSLocalXY","Cluster Eta width BL VS Local X VS Local Y; Local X; Local Y; ClusterEtaWidth",20, -0.5, 19.5,200, -100., 100., 200, -100.,100. );
+    h_EtaSizevsLocalXYL1 = new TH3D( name + "L1EtaWidthVSLocalXY","Cluster Eta width L1 VS Local X VS Local Y; Local X; Local Y; ClusterEtaWidth",20, -0.5, 19.5,200, -100., 100., 200, -100.,100. );
+    h_EtaSizevsLocalXYL2 = new TH3D( name + "L2EtaWidthVSLocalXY","Cluster Eta width L2 VS Local X VS Local Y; Local X; Local Y; ClusterEtaWidth",20, -0.5, 19.5,200, -100., 100., 200, -100.,100. );
+
+    h_PhiSizevsLocalXYIPl = new TH3D( name + "IBLPlanarPhiWidthVSLocalXY","Cluster Phi width IBL Planar VS Local X VS Local Y; Local X; Local Y; ClusterPhiWidth",20, -0.5, 19.5,200, -100., 100., 200, -100.,100. );
+    h_PhiSizevsLocalXYI3D = new TH3D( name + "IBL3DPhiWidthVSLocalXY","Cluster Phi width IBL 3D VS Local X VS Local Y; Local X; Local Y; ClusterPhiWidth",20, -0.5, 19.5,200, -100., 100., 200, -100.,100. );
+    h_PhiSizevsLocalXYBL = new TH3D( name + "BLPhiWidthVSLocalXY","Cluster Phi width BL VS Local X VS Local Y; Local X; Local Y; ClusterPhiWidth",20, -0.5, 19.5,200, -100., 100., 200, -100.,100. );
+    h_PhiSizevsLocalXYL1 = new TH3D( name + "L1PhiWidthVSLocalXY","Cluster Phi width L1 VS Local X VS Local Y; Local X; Local Y; ClusterPhiWidth",20, -0.5, 19.5,200, -100., 100., 200, -100.,100. );
+    h_PhiSizevsLocalXYL2 = new TH3D( name + "L2PhiWidthVSLocalXY","Cluster Phi width L2 VS Local X VS Local Y; Local X; Local Y; ClusterPhiWidth",20, -0.5, 19.5,200, -100., 100., 200, -100.,100. );
+
+//===================================================================================================================================================================================================================================
     h_GlobalZ     =  new TH1D( name + "ClusterGlobalZ", "Cluster Global Z; Global Z; #Hits ", 250, -1000., 1000. );
     h_GlobalZIBL  =  new TH1D( name + "IBLClusterGlobalZ", "IBL Cluster Global Z; Global Z; #Hits ", 250, -1000., 1000. );
     h_GlobalZIPl  =  new TH1D( name + "IBLPlanarClusterGlobalZ", "IBL Planar Cluster Global Z; Global Z; #Hits ", 250, -1000., 1000. );
@@ -660,11 +686,23 @@ struct PixelClusterHists
     allHists.push_back( h_ToTVSLocalEtaL1 );
     allHists.push_back( h_ToTVSLocalEtaL2 );
 //====================SS=============================
-    allHists.push_back( h_ToTvsLocalEtaPhiIPl );
-    allHists.push_back( h_ToTvsLocalEtaPhiI3D );
-    allHists.push_back( h_ToTvsLocalEtaPhiBL );
-    allHists.push_back( h_ToTvsLocalEtaPhiL1 );
-    allHists.push_back( h_ToTvsLocalEtaPhiL2 );
+    allHists.push_back( h_ToTvsLocalXYIPl );
+    allHists.push_back( h_ToTvsLocalXYI3D );
+    allHists.push_back( h_ToTvsLocalXYBL );
+    allHists.push_back( h_ToTvsLocalXYL1 );
+    allHists.push_back( h_ToTvsLocalXYL2 );
+
+    allHists.push_back( h_EtaSizevsLocalXYIPl);
+    allHists.push_back( h_EtaSizevsLocalXYI3D);
+    allHists.push_back( h_EtaSizevsLocalXYBL);
+    allHists.push_back( h_EtaSizevsLocalXYL1);
+    allHists.push_back( h_EtaSizevsLocalXYL2);
+
+    allHists.push_back( h_PhiSizevsLocalXYIPl);
+    allHists.push_back( h_PhiSizevsLocalXYI3D);
+    allHists.push_back( h_PhiSizevsLocalXYBL);
+    allHists.push_back( h_PhiSizevsLocalXYL1);
+    allHists.push_back( h_PhiSizevsLocalXYL2);
 //=====================================================
     allHists.push_back( h_ResiX1 );
     allHists.push_back( h_ResiX2 );
@@ -1262,7 +1300,9 @@ struct PixelClusterHists
         h_ChargeI->Fill(charge);
         h_SizeI->Fill(size);
         h_PhiSizeI->Fill(phiWidth);
+        h_PhiSizevsLocalXYIPl->Fill(localx,localy,phiWidth);
         h_EtaSizeI->Fill(etaWidth);
+        h_EtaSizevsLocalXYIPl->Fill(localx,localy,etaWidth);
       //}
       h_LVL1AI->Fill(lvl1);
       h_SizeVSToTI->Fill(tot,size);
@@ -1278,14 +1318,16 @@ struct PixelClusterHists
       h_EtaInciIPl->Fill(etaInc);
       h_ToTVSLocalPhiIPl->Fill(phiInc,tot);
       h_ToTVSLocalEtaIPl->Fill(etaInc,tot);
-      h_ToTvsLocalEtaPhiIPl->Fill(etaInc,phiInc,tot);
+      h_ToTvsLocalXYIPl->Fill(etaInc,phiInc,tot);
    }else{
       //if ( phiInc > -0.6 && phiInc < 0.6 ) {
         h_ToTI3D->Fill(tot);
         h_ChargeI3D->Fill(charge);
         h_SizeI3D->Fill(size);
         h_PhiSizeI3D->Fill(phiWidth);
+        h_PhiSizevsLocalXYI3D->Fill(localx,localy,phiWidth);
         h_EtaSizeI3D->Fill(etaWidth);
+        h_EtaSizevsLocalXYI3D->Fill(localx,localy,etaWidth);
       //}
       h_LVL1AI3D->Fill(lvl1);
       h_SizeVSToTI3D->Fill(tot,size);
@@ -1301,7 +1343,7 @@ struct PixelClusterHists
       h_EtaInciI3D->Fill(etaInc);
       h_ToTVSLocalPhiI3D->Fill(phiInc,tot);
       h_ToTVSLocalEtaI3D->Fill(etaInc,tot);
-      h_ToTvsLocalEtaPhiI3D->Fill(etaInc,phiInc,tot);
+      h_ToTvsLocalXYI3D->Fill(etaInc,phiInc,tot);
    }
    h_phiVSphimod->Fill(phimod,phi);
  }
@@ -1321,21 +1363,28 @@ struct PixelClusterHists
           h_Charge0->Fill(charge);
           h_Size0->Fill(size);
           h_PhiSize0->Fill(phiWidth);
+          h_PhiSizevsLocalXYBL->Fill(localx,localy,phiWidth);
           h_EtaSize0->Fill(etaWidth);
+          h_EtaSizevsLocalXYBL->Fill(localx,localy,etaWidth);
 	}
         if(layer == 2) {
           h_ToT1->Fill(tot);
           h_Charge1->Fill(charge);
           h_Size1->Fill(size);
           h_PhiSize1->Fill(phiWidth);
+          h_PhiSizevsLocalXYL1->Fill(localx,localy,phiWidth);
           h_EtaSize1->Fill(etaWidth);
+          h_EtaSizevsLocalXYL1->Fill(localx,localy,etaWidth);
+
 	}
         if(layer == 3) {
           h_ToT2->Fill(tot);
           h_Charge2->Fill(charge);
           h_Size2->Fill(size);
           h_PhiSize2->Fill(phiWidth);
+          h_PhiSizevsLocalXYL2->Fill(localx,localy,phiWidth);
           h_EtaSize2->Fill(etaWidth);
+          h_EtaSizevsLocalXYL2->Fill(localx,localy,etaWidth);
 	}
       //}
       h_LVL1A->Fill(lvl1);
@@ -1353,7 +1402,7 @@ struct PixelClusterHists
           h_PullY1->Fill(pullY);
           h_ToTVSLocalPhiBL->Fill(phiInc,tot);
           h_ToTVSLocalEtaBL->Fill(etaInc,tot);
-          h_ToTvsLocalEtaPhiBL->Fill(etaInc,phiInc,tot);
+          h_ToTvsLocalXYBL->Fill(etaInc,phiInc,tot);
         }
         if(layer == 2){
 	  h_ResiX2->Fill(resiX);
@@ -1362,7 +1411,7 @@ struct PixelClusterHists
           h_PullY2->Fill(pullY);
           h_ToTVSLocalPhiL1->Fill(phiInc,tot);
           h_ToTVSLocalEtaL1->Fill(etaInc,tot);
-          h_ToTvsLocalEtaPhiL1->Fill(etaInc,phiInc,tot);
+          h_ToTvsLocalXYL1->Fill(etaInc,phiInc,tot);
         }
         if(layer == 3){
 	  h_ResiX3->Fill(resiX);
@@ -1371,7 +1420,7 @@ struct PixelClusterHists
           h_PullY3->Fill(pullY);
           h_ToTVSLocalPhiL2->Fill(phiInc,tot);
           h_ToTVSLocalEtaL2->Fill(etaInc,tot);
-          h_ToTvsLocalEtaPhiL2->Fill(etaInc,phiInc,tot);
+          h_ToTvsLocalXYL2->Fill(etaInc,phiInc,tot);
         }
       //}
       h_PhiInci->Fill(phiInc);
