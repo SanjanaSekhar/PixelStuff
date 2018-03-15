@@ -388,23 +388,23 @@ struct PixelClusterHists
     h_ToTVSLocalEtaL1   =  new TH2D( name + "PixelsToTVSLocalEtaL1", "ToT VS Eta Incidence L1; Eta Incidence [rad]; ToT; #Hits", 640, -1.6025, 1.597575,200, -0.5,199.5 );
     h_ToTVSLocalEtaL2   =  new TH2D( name + "PixelsToTVSLocalEtaL2", "ToT VS Eta Incidence L2; Eta Incidence [rad]; ToT; #Hits", 640, -1.6025, 1.597575,200, -0.5,199.5 );
 //===========SS==================================================================================================================================================================================================================
-    h_ToTvsLocalXYIPl = new TProfile2D( name + "PixelsToTVSLocalXYIPl","ToT VS LocalX VS LocalY IBL Planar; LocalX; LocalY; ToT; #Hits",20, -10., 10., 100, -50.,50.);
-    h_ToTvsLocalXYI3D = new TProfile2D(name + "PixelsToTVSLocalXYI3D","ToT VS LocalX VS LocalY IBL 3D; LocalX; LocalY; ToT; #Hits", 20, -10., 10., 100, -50.,50.);
-    h_ToTvsLocalXYBL = new TProfile2D(name + "PixelsToTVSLocalXYBL","ToT VS LocalX VS LocalY BL; LocalX; LocalY; ToT; #Hits", 20, -10., 10., 100, -50.,50.);
-    h_ToTvsLocalXYL1 = new TProfile2D( name + "PixelsToTVSLocalXYL1","ToT VS LocalX VS LocalY L1; LocalX; LocalY; ToT; #Hits",20, -10., 10., 100, -50.,50.);
-    h_ToTvsLocalXYL2 = new TProfile2D( name + "PixelsToTVSLocalXYL2","ToT VS LocalX VS LocalY L2; LocalX; LocalY; ToT; #Hits", 20, -10., 10., 100, -50.,50.);
+    h_ToTvsLocalXYIPl = new TProfile2D( name + "PixelsToTVSLocalXYIPl","ToT VS LocalX VS LocalY IBL Planar; LocalY; LocalX; ToT; #Hits", 100, -50.,50.,20, -10., 10.);
+    h_ToTvsLocalXYI3D = new TProfile2D(name + "PixelsToTVSLocalXYI3D","ToT VS LocalX VS LocalY IBL 3D; LocalY; LocalX; ToT; #Hits", 100, -50.,50.,20, -10., 10.);
+    h_ToTvsLocalXYBL = new TProfile2D(name + "PixelsToTVSLocalXYBL","ToT VS LocalX VS LocalY BL; LocalY; LocalX; ToT; #Hits", 100, -50.,50.,20, -10., 10.);
+    h_ToTvsLocalXYL1 = new TProfile2D( name + "PixelsToTVSLocalXYL1","ToT VS LocalX VS LocalY L1; LocalY; LocalX; ToT; #Hits", 100, -50.,50.,20, -10., 10.);
+    h_ToTvsLocalXYL2 = new TProfile2D( name + "PixelsToTVSLocalXYL2","ToT VS LocalX VS LocalY L2; LocalY; LocalX; ToT; #Hits", 100, -50.,50.,20, -10., 10.);
 
-    h_EtaSizevsLocalXYIPl = new TProfile2D( name + "IBLPlanarEtaWidthVSLocalXY","Cluster Eta width IBL Planar VS Local X VS Local Y; Local X; Local Y; ClusterEtaWidth",20, -10., 10., 100, -50.,50.);
-    h_EtaSizevsLocalXYI3D = new TProfile2D( name + "IBL3DEtaWidthVSLocalXY","Cluster Eta width IBL 3D VS Local X VS Local Y; Local X; Local Y; ClusterEtaWidth",20, -10., 10., 100, -50.,50. );
-    h_EtaSizevsLocalXYBL = new TProfile2D( name + "BLEtaWidthVSLocalXY","Cluster Eta width BL VS Local X VS Local Y; Local X; Local Y; ClusterEtaWidth",20, -10., 10., 100, -50.,50. );
-    h_EtaSizevsLocalXYL1 = new TProfile2D( name + "L1EtaWidthVSLocalXY","Cluster Eta width L1 VS Local X VS Local Y; Local X; Local Y; ClusterEtaWidth",20, -10., 10., 100, -50.,50.);
-    h_EtaSizevsLocalXYL2 = new TProfile2D( name + "L2EtaWidthVSLocalXY","Cluster Eta width L2 VS Local X VS Local Y; Local X; Local Y; ClusterEtaWidth",20, -10., 10., 100, -50.,50.);
+    h_EtaSizevsLocalXYIPl = new TProfile2D( name + "IBLPlanarEtaWidthVSLocalXY","Cluster Eta width IBL Planar VS Local X VS Local Y;LocalY; LocalX; ClusterEtaWidth", 100, -50.,50.,20, -10., 10.);
+    h_EtaSizevsLocalXYI3D = new TProfile2D( name + "IBL3DEtaWidthVSLocalXY","Cluster Eta width IBL 3D VS Local X VS Local Y; LocalY; LocalX; ClusterEtaWidth", 100, -50.,50.,20, -10., 10.);
+    h_EtaSizevsLocalXYBL = new TProfile2D( name + "BLEtaWidthVSLocalXY","Cluster Eta width BL VS Local X VS Local Y;LocalY; LocalX; ClusterEtaWidth", 100, -50.,50.,20, -10., 10.);
+    h_EtaSizevsLocalXYL1 = new TProfile2D( name + "L1EtaWidthVSLocalXY","Cluster Eta width L1 VS Local X VS Local Y;LocalY; LocalX; ClusterEtaWidth", 100, -50.,50.,20, -10., 10.);
+    h_EtaSizevsLocalXYL2 = new TProfile2D( name + "L2EtaWidthVSLocalXY","Cluster Eta width L2 VS Local X VS Local Y; LocalY; LocalX; ClusterEtaWidth", 100, -50.,50.,20, -10., 10.);
 
-    h_PhiSizevsLocalXYIPl = new TProfile2D( name + "IBLPlanarPhiWidthVSLocalXY","Cluster Phi width IBL Planar VS Local X VS Local Y; Local X; Local Y; ClusterPhiWidth",20, -10., 10., 100, -50.,50.);
-    h_PhiSizevsLocalXYI3D = new TProfile2D( name + "IBL3DPhiWidthVSLocalXY","Cluster Phi width IBL 3D VS Local X VS Local Y; Local X; Local Y; ClusterPhiWidth",20, -10., 10., 100, -50.,50.);
-    h_PhiSizevsLocalXYBL = new TProfile2D( name + "BLPhiWidthVSLocalXY","Cluster Phi width BL VS Local X VS Local Y; Local X; Local Y; ClusterPhiWidth",20, -10., 10., 100, -50.,50.);
-    h_PhiSizevsLocalXYL1 = new TProfile2D( name + "L1PhiWidthVSLocalXY","Cluster Phi width L1 VS Local X VS Local Y; Local X; Local Y; ClusterPhiWidth",20, -10., 10., 100, -50.,50.);
-    h_PhiSizevsLocalXYL2 = new TProfile2D( name + "L2PhiWidthVSLocalXY","Cluster Phi width L2 VS Local X VS Local Y; Local X; Local Y; ClusterPhiWidth",20, -10., 10., 100, -50.,50.);
+    h_PhiSizevsLocalXYIPl = new TProfile2D( name + "IBLPlanarPhiWidthVSLocalXY","Cluster Phi width IBL Planar VS Local X VS Local Y; LocalY; LocalX; ClusterPhiWidth", 100, -50.,50.,20, -10., 10.);
+    h_PhiSizevsLocalXYI3D = new TProfile2D( name + "IBL3DPhiWidthVSLocalXY","Cluster Phi width IBL 3D VS Local X VS Local Y; LocalY; LocalX; ClusterPhiWidth", 100, -50.,50.,20, -10., 10.);
+    h_PhiSizevsLocalXYBL = new TProfile2D( name + "BLPhiWidthVSLocalXY","Cluster Phi width BL VS Local X VS Local Y; LocalY; LocalX; ClusterPhiWidth", 100, -50.,50.,20, -10., 10.);
+    h_PhiSizevsLocalXYL1 = new TProfile2D( name + "L1PhiWidthVSLocalXY","Cluster Phi width L1 VS Local X VS Local Y;LocalY; LocalX; ClusterPhiWidth", 100, -50.,50.,20, -10., 10.);
+    h_PhiSizevsLocalXYL2 = new TProfile2D( name + "L2PhiWidthVSLocalXY","Cluster Phi width L2 VS Local X VS Local Y; LocalY; LocalX; ClusterPhiWidth", 100, -50.,50.,20, -10., 10.);
 
 //===================================================================================================================================================================================================================================
     h_GlobalZ     =  new TH1D( name + "ClusterGlobalZ", "Cluster Global Z; Global Z; #Hits ", 250, -1000., 1000. );
@@ -1301,9 +1301,9 @@ struct PixelClusterHists
         h_ChargeI->Fill(charge);
         h_SizeI->Fill(size);
         h_PhiSizeI->Fill(phiWidth);
-        h_PhiSizevsLocalXYIPl->Fill(localx,localy,phiWidth);
+        h_PhiSizevsLocalXYIPl->Fill(localy,localx,phiWidth);
         h_EtaSizeI->Fill(etaWidth);
-        h_EtaSizevsLocalXYIPl->Fill(localx,localy,etaWidth);
+        h_EtaSizevsLocalXYIPl->Fill(localy,localx,etaWidth);
       //}
       h_LVL1AI->Fill(lvl1);
       h_SizeVSToTI->Fill(tot,size);
@@ -1319,16 +1319,16 @@ struct PixelClusterHists
       h_EtaInciIPl->Fill(etaInc);
       h_ToTVSLocalPhiIPl->Fill(phiInc,tot);
       h_ToTVSLocalEtaIPl->Fill(etaInc,tot);
-      h_ToTvsLocalXYIPl->Fill(localx,localy,tot);
+      h_ToTvsLocalXYIPl->Fill(localy,localx,tot);
    }else{
       //if ( phiInc > -0.6 && phiInc < 0.6 ) {
         h_ToTI3D->Fill(tot);
         h_ChargeI3D->Fill(charge);
         h_SizeI3D->Fill(size);
         h_PhiSizeI3D->Fill(phiWidth);
-        h_PhiSizevsLocalXYI3D->Fill(localx,localy,phiWidth);
+        h_PhiSizevsLocalXYI3D->Fill(localy,localx,phiWidth);
         h_EtaSizeI3D->Fill(etaWidth);
-        h_EtaSizevsLocalXYI3D->Fill(localx,localy,etaWidth);
+        h_EtaSizevsLocalXYI3D->Fill(localy,localx,etaWidth);
       //}
       h_LVL1AI3D->Fill(lvl1);
       h_SizeVSToTI3D->Fill(tot,size);
@@ -1344,7 +1344,7 @@ struct PixelClusterHists
       h_EtaInciI3D->Fill(etaInc);
       h_ToTVSLocalPhiI3D->Fill(phiInc,tot);
       h_ToTVSLocalEtaI3D->Fill(etaInc,tot);
-      h_ToTvsLocalXYI3D->Fill(localx,localy,tot);
+      h_ToTvsLocalXYI3D->Fill(localy,localx,tot);
    }
    h_phiVSphimod->Fill(phimod,phi);
  }
@@ -1364,18 +1364,18 @@ struct PixelClusterHists
           h_Charge0->Fill(charge);
           h_Size0->Fill(size);
           h_PhiSize0->Fill(phiWidth);
-          h_PhiSizevsLocalXYBL->Fill(localx,localy,phiWidth);
+          h_PhiSizevsLocalXYBL->Fill(localy,localx,phiWidth);
           h_EtaSize0->Fill(etaWidth);
-          h_EtaSizevsLocalXYBL->Fill(localx,localy,etaWidth);
+          h_EtaSizevsLocalXYBL->Fill(localy,localx,etaWidth);
 	}
         if(layer == 2) {
           h_ToT1->Fill(tot);
           h_Charge1->Fill(charge);
           h_Size1->Fill(size);
           h_PhiSize1->Fill(phiWidth);
-          h_PhiSizevsLocalXYL1->Fill(localx,localy,phiWidth);
+          h_PhiSizevsLocalXYL1->Fill(localy,localx,phiWidth);
           h_EtaSize1->Fill(etaWidth);
-          h_EtaSizevsLocalXYL1->Fill(localx,localy,etaWidth);
+          h_EtaSizevsLocalXYL1->Fill(localy,localx,etaWidth);
 
 	}
         if(layer == 3) {
@@ -1383,9 +1383,9 @@ struct PixelClusterHists
           h_Charge2->Fill(charge);
           h_Size2->Fill(size);
           h_PhiSize2->Fill(phiWidth);
-          h_PhiSizevsLocalXYL2->Fill(localx,localy,phiWidth);
+          h_PhiSizevsLocalXYL2->Fill(localy,localx,phiWidth);
           h_EtaSize2->Fill(etaWidth);
-          h_EtaSizevsLocalXYL2->Fill(localx,localy,etaWidth);
+          h_EtaSizevsLocalXYL2->Fill(localy,localx,etaWidth);
 	}
       //}
       h_LVL1A->Fill(lvl1);
@@ -1403,7 +1403,7 @@ struct PixelClusterHists
           h_PullY1->Fill(pullY);
           h_ToTVSLocalPhiBL->Fill(phiInc,tot);
           h_ToTVSLocalEtaBL->Fill(etaInc,tot);
-          h_ToTvsLocalXYBL->Fill(localx,localy,tot);
+          h_ToTvsLocalXYBL->Fill(localy,localx,tot);
         }
         if(layer == 2){
 	  h_ResiX2->Fill(resiX);
@@ -1412,7 +1412,7 @@ struct PixelClusterHists
           h_PullY2->Fill(pullY);
           h_ToTVSLocalPhiL1->Fill(phiInc,tot);
           h_ToTVSLocalEtaL1->Fill(etaInc,tot);
-          h_ToTvsLocalXYL1->Fill(localx,localy,tot);
+          h_ToTvsLocalXYL1->Fill(localy,localx,tot);
         }
         if(layer == 3){
 	  h_ResiX3->Fill(resiX);
@@ -1421,7 +1421,7 @@ struct PixelClusterHists
           h_PullY3->Fill(pullY);
           h_ToTVSLocalPhiL2->Fill(phiInc,tot);
           h_ToTVSLocalEtaL2->Fill(etaInc,tot);
-          h_ToTvsLocalXYL2->Fill(localx,localy,tot);
+          h_ToTvsLocalXYL2->Fill(localy,localx,tot);
         }
       //}
       h_PhiInci->Fill(phiInc);
