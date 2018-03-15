@@ -52,7 +52,7 @@ public:
 
   xAOD::TEvent *m_event;          //!
   unsigned int  m_eventCounter;   //!
-
+ 
 
   PixelAllClusterHists* m_AllClusters;   //!
   PixelClusterHists* m_OTrClusters; //!
