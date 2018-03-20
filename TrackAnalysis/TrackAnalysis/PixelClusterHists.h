@@ -1312,7 +1312,11 @@ struct PixelClusterHists
         h_ToTI->Fill(tot);
         if(localx<=9 && localx>=5 && localy<=20 && localy>=12) h_ToTI_red->Fill(tot);
         if(localx<=0 && localx>=-9 && localy<=20 && localy>=10) h_ToTI_darkorange->Fill(tot);
-        if(localx<=1 && localx>=-4 && localy<=7 && localy>=6) h_ToTI_darkyellow->Fill(tot);
+        if(localx<=1 && localx>=-7 && localy<=7 && localy>=6) h_ToTI_darkyellow->Fill(tot);
+        if(localx<=9 && localx>=3 && localy<=0 && localy>=-6) h_ToTI_red->Fill(tot);
+        if(localx<=-1 && localx>=-9 && localy<=0 && localy>=-10) h_ToTI_darkorange->Fill(tot);
+        if(localx<=-5 && localx>=-9 && localy<=-13 && localy>=-14) h_ToTI_darkyellow->Fill(tot);
+        if(localx<=-1 && localx>=-3 && localy<=-13 && localy>=-14) h_ToTI_darkyellow->Fill(tot);
         h_ChargeI->Fill(charge);
         h_SizeI->Fill(size);
         h_PhiSizeI->Fill(phiWidth);
