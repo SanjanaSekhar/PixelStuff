@@ -110,9 +110,9 @@ struct PixelClusterHists
   TProfile2D*  h_PhiSizevsLocalXYL1;
   TProfile2D*  h_PhiSizevsLocalXYL2;
 
-  TH1D*  h_ToTI_red;
-  TH1D*  h_ToTI_darkorange;
-  TH1D*  h_ToTI_darkyellow;
+  TH1F*  h_ToTI_red;
+  TH1F*  h_ToTI_darkorange;
+  TH1F*  h_ToTI_darkyellow;
 
 //===========================
   TH1D* h_GlobalZ;
@@ -410,9 +410,9 @@ struct PixelClusterHists
     h_PhiSizevsLocalXYL1 = new TProfile2D( name + "L1PhiWidthVSLocalXY","Cluster Phi width L1 VS Local X VS Local Y;LocalY; LocalX; ClusterPhiWidth",80, -40.,40.,20, -10., 10.);
     h_PhiSizevsLocalXYL2 = new TProfile2D( name + "L2PhiWidthVSLocalXY","Cluster Phi width L2 VS Local X VS Local Y; LocalY; LocalX; ClusterPhiWidth",80, -40.,40.,20, -10., 10.);
 
-    h_ToTI_red =  new TH1D( name + "IBLPlanarClusterToT red region", "IBL Planar Cluster ToT; #ToT; #Hits", 10, 0, 10 );
-    h_ToTI_darkorange =  new TH1D( name + "IBLPlanarClusterToT dark orange region", "IBL Planar Cluster ToT; #ToT; #Hits", 10, 0, 10 );
-    h_ToTI_darkyellow =  new TH1D( name + "IBLPlanarClusterToT dark yellow region", "IBL Planar Cluster ToT; #ToT; #Hits", 10, 0, 10 );
+    h_ToTI_red =  new TH1F( name + "IBLPlanarClusterToT red region", "IBL Planar Cluster ToT; #ToT; #Hits", 10, 0, 10 );
+    h_ToTI_darkorange =  new TH1F( name + "IBLPlanarClusterToT dark orange region", "IBL Planar Cluster ToT; #ToT; #Hits", 10, 0, 10 );
+    h_ToTI_darkyellow =  new TH1F( name + "IBLPlanarClusterToT dark yellow region", "IBL Planar Cluster ToT; #ToT; #Hits", 10, 0, 10 );
 
 //===================================================================================================================================================================================================================================
     h_GlobalZ     =  new TH1D( name + "ClusterGlobalZ", "Cluster Global Z; Global Z; #Hits ", 250, -1000., 1000. );
