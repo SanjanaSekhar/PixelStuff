@@ -110,9 +110,9 @@ struct PixelClusterHists
   TProfile2D*  h_PhiSizevsLocalXYL1;
   TProfile2D*  h_PhiSizevsLocalXYL2;
 
-  TH1F*  h_ToTI_red;
-  TH1F*  h_ToTI_darkorange;
-  TH1F*  h_ToTI_darkyellow;
+  TH1D*  h_ToTI_red;
+  TH1D*  h_ToTI_darkorange;
+  TH1D*  h_ToTI_darkyellow;
 
 //===========================
   TH1D* h_GlobalZ;
@@ -410,9 +410,9 @@ struct PixelClusterHists
     h_PhiSizevsLocalXYL1 = new TProfile2D( name + "L1PhiWidthVSLocalXY","Cluster Phi width L1 VS Local X VS Local Y;LocalY; LocalX; ClusterPhiWidth",80, -40.,40.,20, -10., 10.);
     h_PhiSizevsLocalXYL2 = new TProfile2D( name + "L2PhiWidthVSLocalXY","Cluster Phi width L2 VS Local X VS Local Y; LocalY; LocalX; ClusterPhiWidth",80, -40.,40.,20, -10., 10.);
 
-    h_ToTI_red =  new TH1F( name + "IBLPlanarClusterToT red region", "IBL Planar Cluster ToT; #ToT; #Hits", 10, 0, 10 );
-    h_ToTI_darkorange =  new TH1F( name + "IBLPlanarClusterToT dark orange region", "IBL Planar Cluster ToT; #ToT; #Hits", 10, 0, 10 );
-    h_ToTI_darkyellow =  new TH1F( name + "IBLPlanarClusterToT dark yellow region", "IBL Planar Cluster ToT; #ToT; #Hits", 10, 0, 10 );
+    h_ToTI_red =  new TH1D( name + "IBLPlanarClusterToT red region", "IBL Planar Cluster ToT; #ToT; #Hits", 40, 0., 40.);
+    h_ToTI_darkorange =  new TH1D( name + "IBLPlanarClusterToT dark orange region", "IBL Planar Cluster ToT; #ToT; #Hits", 40, 0., 40.);
+    h_ToTI_darkyellow =  new TH1D( name + "IBLPlanarClusterToT dark yellow region", "IBL Planar Cluster ToT; #ToT; #Hits", 40, 0., 40.);
 
 //===================================================================================================================================================================================================================================
     h_GlobalZ     =  new TH1D( name + "ClusterGlobalZ", "Cluster Global Z; Global Z; #Hits ", 250, -1000., 1000. );
@@ -1310,9 +1310,9 @@ struct PixelClusterHists
    if ( etamod >= -6 && etamod <= 5) {
       //if ( phiInc > -0.5 && phiInc < 0.6 ) {
         h_ToTI->Fill(tot);
-        if(tot >= 5.5 && tot <= 6) h_ToTI_darkyellow->Fill(tot);
-        else if(tot > 6.3 && tot <= 6.8) h_ToTI_darkorange->Fill(tot);
-        else if(tot > 6.8 && tot <= 7.2) h_ToTI_red->Fill(tot);
+        if(localx<=9 && localx>=5 && localy<=20 && localy>=12) h_ToTI_red->Fill(tot);
+        if(localx<=0 && localx>=-9 && localy<=20 && localy>=10) h_ToTI_darkorange->Fill(tot);
+        if(localx<=1 && localx>=-4 && localy<=7 && localy>=6) h_ToTI_darkyellow->Fill(tot);
         h_ChargeI->Fill(charge);
         h_SizeI->Fill(size);
         h_PhiSizeI->Fill(phiWidth);
