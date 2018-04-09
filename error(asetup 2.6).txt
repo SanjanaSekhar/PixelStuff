@@ -1,0 +1,99 @@
+Processing $ROOTCOREDIR/scripts/load_packages.C...
+xAOD::Init                INFO    Environment initialised for data access
+Processing ../source/TrackAnalysis/share/runPixelClusterAnalysis.cxx ("submitDir")...
+In file included from libAthContainersDict dictionary payload:49:
+In file included from /cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/AuxTypeRegistry.h:18:
+In file included from /cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/tools/AuxTypeVector.h:18:
+In file included from /cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.h:131:
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:39:21: error: 
+      nested name specifier 'PackedContainer<T>::' for declaration does not
+      refer into a class, class template or class template partial
+      specialization
+PackedContainer<T>::PackedContainer()
+~~~~~~~~~~~~~~~~~~~~^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:55:26: error: 
+      nested name specifier 'PackedContainer<T>::' for declaration does not
+      refer into a class, class template or class template partial
+      specialization
+bool PackedContainer<T>::setOption (const AuxDataOption& option)
+     ~~~~~~~~~~~~~~~~~~~~^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:57:10: error: 
+      use of undeclared identifier 'm_parms'
+  return m_parms.setOption (option);
+         ^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:57:29: error: 
+      use of undeclared identifier 'option'
+  return m_parms.setOption (option);
+                            ^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:72:26: error: 
+      nested name specifier 'PackedContainer<T>::' for declaration does not
+      refer into a class, class template or class template partial
+      specialization
+bool PackedContainer<T>::setOption (const std::string& name, int val)
+     ~~~~~~~~~~~~~~~~~~~~^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:74:10: error: 
+      invalid use of 'this' outside of a non-static member function
+  return this->setOption (SG::AuxDataOption (name, val));
+         ^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:74:46: error: 
+      use of undeclared identifier 'name'
+  return this->setOption (SG::AuxDataOption (name, val));
+                                             ^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:74:52: error: 
+      use of undeclared identifier 'val'
+  return this->setOption (SG::AuxDataOption (name, val));
+                                                   ^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:89:26: error: 
+      nested name specifier 'PackedContainer<T>::' for declaration does not
+      refer into a class, class template or class template partial
+      specialization
+bool PackedContainer<T>::setOption (const std::string& name, float val)
+     ~~~~~~~~~~~~~~~~~~~~^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:91:10: error: 
+      invalid use of 'this' outside of a non-static member function
+  return this->setOption (SG::AuxDataOption (name, val));
+         ^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:91:46: error: 
+      use of undeclared identifier 'name'
+  return this->setOption (SG::AuxDataOption (name, val));
+                                             ^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:91:52: error: 
+      use of undeclared identifier 'val'
+  return this->setOption (SG::AuxDataOption (name, val));
+                                                   ^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:106:26: error: 
+      nested name specifier 'PackedContainer<T>::' for declaration does not
+      refer into a class, class template or class template partial
+      specialization
+bool PackedContainer<T>::setOption (const std::string& name, double val)
+     ~~~~~~~~~~~~~~~~~~~~^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:108:10: error: 
+      invalid use of 'this' outside of a non-static member function
+  return this->setOption (SG::AuxDataOption (name, val));
+         ^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:108:46: error: 
+      use of undeclared identifier 'name'
+  return this->setOption (SG::AuxDataOption (name, val));
+                                             ^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:108:52: error: 
+      use of undeclared identifier 'val'
+  return this->setOption (SG::AuxDataOption (name, val));
+                                                   ^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:117:45: error: 
+      nested name specifier 'PackedContainer<T>::' for declaration does not
+      refer into a class, class template or class template partial
+      specialization
+const PackedParameters& PackedContainer<T>::parms() const
+                        ~~~~~~~~~~~~~~~~~~~~^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:119:10: error: 
+      use of undeclared identifier 'm_parms'
+  return m_parms;
+         ^
+/cvmfs/atlas.cern.ch/repo/sw/ASG/2.6/AnalysisBase/2.6.3/InstallArea/x86_64-slc6-gcc49-opt/include/AthContainers/PackedContainer.icc:129:26: error: 
+      nested name specifier 'PackedContainer<T>::' for declaration does not
+      refer into a class, class template or class template partial
+      specialization
+void PackedContainer<T>::setParms (const PackedParameters& parms)
+     ~~~~~~~~~~~~~~~~~~~~^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+TInterpreter::AutoParse   ERROR   Error parsing payload code for class DataLink with content:
