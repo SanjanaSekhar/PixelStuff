@@ -1038,8 +1038,8 @@ struct PixelClusterHists
   float etaInc = msos->auxdata< float > ("localTheta");
   int etamod = pc->auxdata< int >("eta_module");
   int phimod = pc->auxdata< int >("phi_module");
-  int tot = pc->auxdata< int >("ToT");
-  int realtot = tot;
+  double tot = double(pc->auxdata< int >("ToT"));
+  double realtot = tot;
   float charge = pc->auxdata< float >("charge");
   //int size = pc->auxdata< int >("size");
   int size = 0;
@@ -1126,7 +1126,7 @@ struct PixelClusterHists
       //if ( bec == 0 && layer == 0)std::cout << " charge, tot = " << charge << " , " << tot << " new charge, tot = " << chargenew << " , " <<
       //totnew << std::endl;
     }
-    tot = totnew;
+    tot = double(totnew);
  }
 
  // Build omega distribution for phi:
