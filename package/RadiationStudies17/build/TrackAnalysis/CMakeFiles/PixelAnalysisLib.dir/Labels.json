@@ -1,0 +1,59 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/source/TrackAnalysis/TrackAnalysis/EventHists.h"
+		},
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/source/TrackAnalysis/TrackAnalysis/PixelAllClusterHists.h"
+		},
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/source/TrackAnalysis/TrackAnalysis/PixelAllClusterHists_copy.h"
+		},
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/source/TrackAnalysis/TrackAnalysis/PixelClusterAnalysis.h"
+		},
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/source/TrackAnalysis/TrackAnalysis/PixelClusterAnalysis_copy.h"
+		},
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/source/TrackAnalysis/TrackAnalysis/PixelClusterHists.h"
+		},
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/source/TrackAnalysis/TrackAnalysis/PixelClusterHists_copy.h"
+		},
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/source/TrackAnalysis/TrackAnalysis/TrackEfficiencyAnalysis.h"
+		},
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/source/TrackAnalysis/TrackAnalysis/TrackEfficiencyHists.h"
+		},
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/source/TrackAnalysis/TrackAnalysis/TrackHists.h"
+		},
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/source/TrackAnalysis/Root/PixelClusterAnalysis.cxx"
+		},
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/source/TrackAnalysis/Root/TrackEfficiencyAnalysis.cxx"
+		},
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/build/TrackAnalysis/PixelAnalysisLibCintDict.cxx",
+			"labels" : 
+			[
+				"TrackAnalysis"
+			]
+		},
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/build/TrackAnalysis/PixelAnalysisLibCintDict.cxx.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"TrackAnalysis"
+		],
+		"name" : "PixelAnalysisLib"
+	}
+}

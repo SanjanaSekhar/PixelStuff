@@ -1,0 +1,11 @@
+{ decls }
+namespace std {  }
+
+[ libPixelAnalysisLib.so ]
+# List of selected classes
+class PixelClusterAnalysis
+class TrackEfficiencyAnalysis
+class map<std::string,std::string>
+class map<string,string>
+header TrackAnalysis/PixelClusterAnalysis.h
+header TrackAnalysis/TrackEfficiencyAnalysis.h

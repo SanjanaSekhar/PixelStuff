@@ -1,0 +1,63 @@
+<!-- Auto-generated file, please do not edit -->
+<Project name="WorkDir" >
+   <SubProject name="EventLoop" >
+   </SubProject>
+   <SubProject name="EventLoopGrid" >
+   </SubProject>
+   <SubProject name="EventLoopAlgs" >
+   </SubProject>
+   <SubProject name="xAODRootAccess" >
+   </SubProject>
+   <SubProject name="xAODBase" >
+   </SubProject>
+   <SubProject name="EventPrimitives" >
+   </SubProject>
+   <SubProject name="GeoPrimitives" >
+   </SubProject>
+   <SubProject name="xAODEventInfo" >
+   </SubProject>
+   <SubProject name="xAODTracking" >
+   </SubProject>
+   <SubProject name="InDetTrackSelectionTool" >
+   </SubProject>
+   <SubProject name="GoodRunsLists" >
+   </SubProject>
+   <SubProject name="xAODTruth" >
+   </SubProject>
+   <SubProject name="xAODMuon" >
+   </SubProject>
+   <SubProject name="MuonMomentumCorrections" >
+   </SubProject>
+   <SubProject name="IsolationSelection" >
+   </SubProject>
+   <SubProject name="TrigDecisionTool" >
+   </SubProject>
+   <SubProject name="TrigConfxAOD" >
+   </SubProject>
+   <SubProject name="MuonSelectorTools" >
+   </SubProject>
+   <SubProject name="PathResolver" >
+   </SubProject>
+   <SubProject name="TrackAnalysis" >
+      <Dependency name="EventLoop" />
+      <Dependency name="EventLoopGrid" />
+      <Dependency name="EventLoopAlgs" />
+      <Dependency name="xAODRootAccess" />
+      <Dependency name="xAODBase" />
+      <Dependency name="EventPrimitives" />
+      <Dependency name="GeoPrimitives" />
+      <Dependency name="xAODEventInfo" />
+      <Dependency name="xAODTracking" />
+      <Dependency name="InDetTrackSelectionTool" />
+      <Dependency name="GoodRunsLists" />
+      <Dependency name="xAODTruth" />
+      <Dependency name="xAODMuon" />
+      <Dependency name="MuonMomentumCorrections" />
+      <Dependency name="IsolationSelection" />
+      <Dependency name="TrigDecisionTool" />
+      <Dependency name="TrigConfxAOD" />
+      <Dependency name="MuonSelectorTools" />
+      <Dependency name="PathResolver" />
+      <Dependency name="xAODRootAccess" />
+   </SubProject>
+</Project>

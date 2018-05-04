@@ -1,0 +1,19 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/build/x86_64-slc6-gcc49-opt/include/TrackAnalysis"
+		},
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/build/x86_64-slc6-gcc49-opt/include/TrackAnalysis.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"TrackAnalysis"
+		],
+		"name" : "TrackAnalysisHeaderInstall"
+	}
+}

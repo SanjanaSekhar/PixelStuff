@@ -1,0 +1,5 @@
+# Target labels
+ TrackAnalysis
+# Source files and their labels
+/afs/cern.ch/work/s/ssekhar/RadiationStudies17/build/x86_64-slc6-gcc49-opt/include/TrackAnalysis
+/afs/cern.ch/work/s/ssekhar/RadiationStudies17/build/x86_64-slc6-gcc49-opt/include/TrackAnalysis.rule

@@ -1,0 +1,19 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/build/TrackAnalysis/CMakeFiles/runPixelClusterAnalysisExeAttribSet"
+		},
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/build/TrackAnalysis/CMakeFiles/runPixelClusterAnalysisExeAttribSet.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"TrackAnalysis"
+		],
+		"name" : "runPixelClusterAnalysisExeAttribSet"
+	}
+}

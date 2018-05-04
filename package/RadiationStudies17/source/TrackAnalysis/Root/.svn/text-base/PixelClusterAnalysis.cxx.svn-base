@@ -1,0 +1,308 @@
+#include <EventLoop/Job.h>
+#include <EventLoop/StatusCode.h>
+#include <EventLoop/Worker.h>
+#include <TrackAnalysis/PixelClusterAnalysis.h>
+
+
+// EDM includes: - if move to header file will not compile?
+#include "xAODEventInfo/EventInfo.h"
+#include "xAODTruth/TruthParticleAuxContainer.h"
+#include "xAODTruth/TruthParticleContainer.h"
+#include "xAODTruth/TruthVertex.h"
+#include "xAODTracking/PrepRawDataContainer.h"
+#include "xAODTracking/MeasurementStateOnSurfaceContainer.h"
+#include "xAODTracking/TrackParticleContainer.h"
+#include "xAODTracking/TrackParticleAuxContainer.h"
+
+#include "xAODRootAccess/TStore.h"
+#include "xAODCore/ShallowCopy.h"
+
+
+// this is needed to distribute the algorithm to the workers
+ClassImp(PixelClusterAnalysis)
+
+
+
+PixelClusterAnalysis :: PixelClusterAnalysis ()
+{
+  // Here you put any code for the base initialization of variables,
+  // e.g. initialize all pointers to 0.  Note that you should only put
+  // the most basic initialization here, since this method will be
+  // called on both the submission and the worker node.  Most of your
+  // initialization code will go into histInitialize() and
+  // initialize().
+}
+
+
+
+EL::StatusCode PixelClusterAnalysis :: setupJob (EL::Job& job)
+{
+  // Here you put code that sets up the job on the submission object
+  // so that it is ready to work with your algorithm, e.g. you can
+  // request the D3PDReader service or add output files.  Any code you
+  // put here could instead also go into the submission script.  The
+  // sole advantage of putting it here is that it gets automatically
+  // activated/deactivated when you add/remove the algorithm from your
+  // job, which may or may not be of value to you.
+  
+  
+  job.useXAOD ();
+
+  // let's initialize the algorithm to use the xAODRootAccess package
+  xAOD::Init( "PixelClusterAnalysis" ).ignore(); // call before opening first file
+  
+  return EL::StatusCode::SUCCESS;
+}
+
+
+
+EL::StatusCode PixelClusterAnalysis :: histInitialize ()
+{
+  // Here you do everything that needs to be done at the very
+  // beginning on each worker node, e.g. create histograms and output
+  // trees.  This method gets called before any input files are
+  // connected.
+  return EL::StatusCode::SUCCESS;
+}
+
+
+
+EL::StatusCode PixelClusterAnalysis :: fileExecute ()
+{
+  // Here you do everything that needs to be done exactly once for every
+  // single file, e.g. collect a list of all lumi-blocks processed
+  return EL::StatusCode::SUCCESS;
+}
+
+
+
+EL::StatusCode PixelClusterAnalysis :: changeInput (bool firstFile)
+{
+  // Here you do everything you need to do when we change input files,
+  // e.g. resetting branch addresses on trees.  If you are using
+  // D3PDReader or a similar service this method is not needed.
+  return EL::StatusCode::SUCCESS;
+}
+
+
+
+EL::StatusCode PixelClusterAnalysis :: initialize ()
+{
+  // Here you do everything that you need to do after the first input
+  // file has been connected and before the first event is processed,
+  // e.g. create additional histograms based on which variables are
+  // available in the input files.  You can also create all of your
+  // histograms and trees in here, but be aware that this method
+  // doesn't get called if no events are processed.  So any objects
+  // you create here won't be available in the output if you have no
+  // input events.
+  
+  m_event = wk()->xaodEvent();
+  
+  // as a check, let's see the number of events in our xAOD
+  Info("initialize()", "Number of events = %lli", m_event->getEntries() ); // print long long int
+  
+  
+  return EL::StatusCode::SUCCESS;
+}
+
+
+
+EL::StatusCode PixelClusterAnalysis :: execute ()
+{
+  // Here you do everything that needs to be done on every single
+  // events, e.g. read input variables, apply cuts, and fill
+  // histograms and trees.  This is where most of your actual analysis
+  // code will go.
+  
+
+  // print every 100 events, so we know where we are:
+  if( (m_eventCounter % 100) ==0 ) Info("execute()", "Event number = %i", m_eventCounter );
+  m_eventCounter++;
+
+  //----------------------------
+  // Event information
+  //--------------------------- 
+  const xAOD::EventInfo* eventInfo = 0;
+  if( ! m_event->retrieve( eventInfo, "EventInfo").isSuccess() ){
+    Error("execute()", "Failed to retrieve event info collection. Exiting." );
+    return EL::StatusCode::FAILURE;
+  }
+
+  // check if the event is data or MC
+  // (many tools are applied either to data or MC)
+  bool isMC = false;
+  // check if the event is MC
+  if(eventInfo->eventType( xAOD::EventInfo::IS_SIMULATION ) ){
+    isMC = true; // can do something with this later
+  }   
+
+
+
+
+
+  // get track container of interest
+  const xAOD::TrackParticleContainer* recoTracks = 0;
+  if ( !m_event->retrieve( recoTracks, "InDetTrackParticles" ).isSuccess() ){ // retrieve arguments: container type, container key
+    Error("execute()", "Failed to retrieve Reconstructed Track container. Exiting." );
+    return EL::StatusCode::FAILURE;
+  }
+
+  // loop over the tracks in the container
+  for( xAOD::TrackParticleContainer::const_iterator recoTrk_itr = recoTracks->begin();
+          recoTrk_itr != recoTracks->end(); recoTrk_itr++) {
+
+    // Make your track selection
+    if ( (*recoTrk_itr)->pt() < 1000 )
+      continue;
+
+    Info("execute()",  "Track  (pT, eta, phi)  = (%f, %f, %f)", (*recoTrk_itr)->pt(), (*recoTrk_itr)->eta(), (*recoTrk_itr)->phi() );
+
+
+    typedef std::vector<ElementLink< xAOD::MeasurementStateOnSurfaceContainer > > MeasurementsOnTrack;
+    typedef std::vector<ElementLink< xAOD::MeasurementStateOnSurfaceContainer > >::const_iterator MeasurementsOnTrackIter;
+    static const char* measurementNames = "ID1_msosLink";   //Note the prefix could change
+
+    // Check if there are MSOS attached
+    if( ! (*recoTrk_itr)->isAvailable< MeasurementsOnTrack >( measurementNames ) ) {
+      continue;
+    }
+    // Get the MSOS's
+    const MeasurementsOnTrack& measurementsOnTrack = (*recoTrk_itr)->auxdata< MeasurementsOnTrack >( measurementNames );
+
+    // Loop over track MeasurementStateOnSurface's
+    
+    
+    for( MeasurementsOnTrackIter msos_iter = measurementsOnTrack.begin();
+         msos_iter != measurementsOnTrack.end(); ++msos_iter)
+    {  
+      //Check if the element link is valid
+      if( ! (*msos_iter).isValid() ) {
+        continue;
+      }
+      
+      const xAOD::MeasurementStateOnSurface* msos = *(*msos_iter); 
+     
+      // The detector type enum is defined in TrkEventPrimitives/TrackStateDefs.h
+			// The mesurement state on surface type is defined in the header file TrkTrack/TrackStateOnSurface.h
+      // We will port the enums to xAOD world in the future
+      if( msos->detType() != 1  ||  msos->type() != 0 )  //its   pixel && and a measurement on track
+        continue;
+      
+      Info("execute()",  "->MSOS is a pixel with the following ID %li", msos->detElementId()); 
+      
+      //Get pixel cluster
+      if(  msos->prepRawDataLink().isValid() && *(msos->prepRawDataLink()) ){
+        const xAOD::PrepRawData* pixelCluster =  *(msos->prepRawDataLink());        
+        // Access a dressed member    
+        float charge(0);
+        if( pixelCluster->isAvailable< float >( "charge" ) )   // Check is not required if you know it is there
+          charge = pixelCluster->auxdata< float >("charge"); 
+
+        Info("execute()",  "-->Pixel Cluster local position (%f, %f) has the charge %f", pixelCluster->localX(), pixelCluster->localY(), charge );
+        
+        if(isMC){
+          std::vector<int> truth_barcode;
+          if( pixelCluster->isAvailable< std::vector<int> >( "truth_barcode" ) ) 
+            truth_barcode = pixelCluster->auxdata< std::vector<int> >("truth_barcode"); 
+          for(  std::vector<int>::const_iterator barcode = truth_barcode.begin(); barcode !=truth_barcode.end();  ++barcode){
+            Info("execute()",  "--->Pixel Cluster orginates from particle with barcode %i", *barcode);
+          } 
+        } //End check on MC           
+      } // End Check on Element link     
+    } // End for loop over MSOS's
+  } // end for loop over reconstructed tracks
+
+
+  // If you don't care about the global properties of the track you can loop over the MSOS directly 
+  // Get the measurement state on surface
+  const xAOD::MeasurementStateOnSurfaceContainer* pixelMSOS = 0;
+  if ( !m_event->retrieve( pixelMSOS, "PixelMSOSs" ).isSuccess() ){ // retrieve arguments: container type, container key
+    Error("execute()", "Failed to retrieve Pixel MeasurementStateOnSurfaceContainer. Exiting." );
+    return EL::StatusCode::FAILURE;
+  }
+
+  // loop over the tracks in the container
+
+  Info("execute()",  "Looping over the MSOS container");
+  for( xAOD::MeasurementStateOnSurfaceContainer::const_iterator msos_itr = pixelMSOS->begin();
+          msos_itr != pixelMSOS->end(); msos_itr++) 
+  {  
+    if( (*msos_itr)->detType() == 1  &&  (*msos_itr)->type() == 1 ) //its  a pixel && anda a measurement on track    
+    Info("execute()",  "MSOS is a pixel with the following ID %li", (*msos_itr)->detElementId());
+  }  
+  
+  
+  //If you don't about the track properties at all you can loop over the the pixel clusters
+  const xAOD::PrepRawDataContainer* pixelClusters = 0;
+  if ( !m_event->retrieve( pixelClusters, "PixelClusters" ).isSuccess() ){ // retrieve arguments: container type, container key
+    Error("execute()", "Failed to retrieve Pixel Clusters. Exiting." );
+    return EL::StatusCode::FAILURE;
+  }
+
+  // loop over the tracks in the container
+  
+  // Different method of accessing the data
+  static SG::AuxElement::ConstAccessor< std::vector<float> >  NN_matrixOfCharge("NN_matrixOfCharge");
+  
+  Info("execute()",  "Looping over the PRD container");
+  for( xAOD::PrepRawDataContainer::const_iterator cluster_itr = pixelClusters->begin();
+       cluster_itr != pixelClusters->end(); cluster_itr++) 
+  {  
+  
+    float charge(0);
+    if( (*cluster_itr)->isAvailable< float >( "charge" ) )   // Check is not required if you know it is there
+      charge = (*cluster_itr)->auxdataConst< float >("charge"); 
+
+    Info("execute()",  "Pixel Cluster local position (%f, %f) with charge %f",  (*cluster_itr)->localX(),  (*cluster_itr)->localY(), charge );  
+    
+    Info("execute()",  "Size of the NN charge matrix %li", NN_matrixOfCharge( **cluster_itr ).size() ); 
+    
+  }  
+   
+  
+  return EL::StatusCode::SUCCESS;
+}
+
+
+
+EL::StatusCode PixelClusterAnalysis :: postExecute ()
+{
+  // Here you do everything that needs to be done after the main event
+  // processing.  This is typically very rare, particularly in user
+  // code.  It is mainly used in implementing the NTupleSvc.
+  return EL::StatusCode::SUCCESS;
+}
+
+
+
+EL::StatusCode PixelClusterAnalysis :: finalize ()
+{
+  // This method is the mirror image of initialize(), meaning it gets
+  // called after the last event has been processed on the worker node
+  // and allows you to finish up any objects you created in
+  // initialize() before they are written to disk.  This is actually
+  // fairly rare, since this happens separately for each worker node.
+  // Most of the time you want to do your post-processing on the
+  // submission node after all your histogram outputs have been
+  // merged.  This is different from histFinalize() in that it only
+  // gets called on worker nodes that processed input events.
+  return EL::StatusCode::SUCCESS;
+}
+
+
+
+EL::StatusCode PixelClusterAnalysis :: histFinalize ()
+{
+  // This method is the mirror image of histInitialize(), meaning it
+  // gets called after the last event has been processed on the worker
+  // node and allows you to finish up any objects you created in
+  // histInitialize() before they are written to disk.  This is
+  // actually fairly rare, since this happens separately for each
+  // worker node.  Most of the time you want to do your
+  // post-processing on the submission node after all your histogram
+  // outputs have been merged.  This is different from finalize() in
+  // that it gets called on all worker nodes regardless of whether
+  // they processed input events.
+  return EL::StatusCode::SUCCESS;
+}

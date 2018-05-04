@@ -1,0 +1,16 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/afs/cern.ch/work/s/ssekhar/RadiationStudies17/source/TrackAnalysis/util/runPixelClusterAnalysis.cxx"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"TrackAnalysis"
+		],
+		"name" : "runPixelClusterAnalysis"
+	}
+}

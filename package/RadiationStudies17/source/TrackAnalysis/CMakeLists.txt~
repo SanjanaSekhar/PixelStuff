@@ -1,0 +1,77 @@
+# $Id: CMakeLists.txt 779405 2016-10-20 13:44:57Z krasznaa $
+################################################################################
+# Package: PixelAnalysis
+################################################################################
+
+# Declare the package name:
+atlas_subdir( TrackAnalysis )
+
+# Extra dependencies based on the build environment:
+set( extra_deps )
+if( XAOD_STANDALONE )
+   set( extra_deps Control/xAODRootAccess )
+else()
+   set( extra_deps Control/AthenaBaseComps GaudiKernel )
+endif()
+
+# Declare the package's dependencies:
+atlas_depends_on_subdirs(
+   PUBLIC
+   EventLoop EventLoopGrid EventLoopAlgs xAODRootAccess xAODBase
+   EventPrimitives GeoPrimitives xAODEventInfo xAODTracking 
+   InnerDetector/InDetRecTools/InDetTrackSelectionTool
+   DataQuality/GoodRunsLists 
+   xAODTruth xAODMuon MuonMomentumCorrections IsolationSelection TrigDecisionTool TrigConfxAOD MuonSelectorTools PathResolver
+   PRIVATE
+   ${extra_deps} )
+
+# External dependencies:
+find_package( GTest )
+
+# Libraries in the package:
+atlas_add_root_dictionary( PixelAnalysisLib PixelAnalysisCintDict
+   ROOT_HEADERS Root/LinkDef.h
+   EXTERNAL_PACKAGES ROOT )
+
+atlas_add_library( PixelAnalysisLib
+   TrackAnalysis/*.h Root/*.cxx ${PixelAnalysisCintDict}
+   PUBLIC_HEADERS TrackAnalysis
+   LINK_LIBRARIES EventLoop EventLoopGrid EventLoopAlgs xAODRootAccess xAODBase 
+   EventPrimitives GeoPrimitives xAODEventInfo xAODTracking 
+   GoodRunsListsLib xAODTruth xAODMuon MuonMomentumCorrectionsLib IsolationSelectionLib TrigDecisionToolLib TrigConfxAODLib MuonSelectorToolsLib
+   PathResolver
+)
+
+if( NOT XAOD_STANDALONE )
+   atlas_add_component( TrackAnalysis
+      src/*.h src/*.cxx src/components/*.cxx
+      LINK_LIBRARIES AthenaBaseComps GaudiKernel PixelAnalysisLib xAODMuon xAODTracking xAODPrimitives xAODCore AthContainers AsgTools xAODBase PathResolver)
+endif()
+
+# Executable(s) in the package:
+atlas_add_executable(
+   runPixelClusterAnalysis util/runPixelClusterAnalysis.cxx
+   LINK_LIBRARIES PixelAnalysisLib xAODMuon xAODTracking xAODPrimitives xAODCore AthContainers AsgTools xAODBase PathResolver)
+
+atlas_add_executable(
+   gridPixel util/gridPixel.cxx
+   LINK_LIBRARIES PixelAnalysisLib xAODMuon xAODTracking xAODPrimitives xAODCore AthContainers AsgTools xAODBase PathResolver)
+
+# Test(s) in the package:
+set( extra_libs )
+if( XAOD_STANDALONE )
+   set( extra_libs xAODRootAccess )
+endif()
+atlas_add_test( gt_ToolHandle_test
+   SOURCES test/gt_ToolHandle_test.cxx
+   INCLUDE_DIRS ${GTEST_INCLUDE_DIRS}
+   LINK_LIBRARIES ${GTEST_LIBRARIES} AsgTools PixelAnalysisLib ${extra_libs} )
+
+atlas_add_test( gt_AnaToolHandle_test
+   SOURCES test/gt_AnaToolHandle_test.cxx
+   INCLUDE_DIRS ${GTEST_INCLUDE_DIRS}
+   LINK_LIBRARIES ${GTEST_LIBRARIES} AsgTools PixelAnalysisLib )
+
+#Data files needed by the package
+atlas_install_data( share/test.txt )
+
