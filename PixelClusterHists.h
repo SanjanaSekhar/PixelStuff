@@ -10,7 +10,7 @@
 #include "TGraphAsymmErrors.h"
 #include "TMath.h"
 #include "TString.h"
-
+#include "math.h"
 #ifndef __MAKECINT__
 #include "xAODTruth/TruthParticle.h"
 #include "xAODTruth/TruthVertex.h"
@@ -113,6 +113,18 @@ struct PixelClusterHists
   TH1D*  h_ToTIPl_lowT;
   TH1D*  h_ToTIPl_highT;
   TH1D*  h_ToTI_darkyellow;
+
+  TH2D* h_LocalYVSGlobalZIPl;
+  TH2D* h_LocalYVSGlobalZI3D;
+  TH2D* h_LocalYVSGlobalZBL;
+  TH2D* h_LocalYVSGlobalZL1;
+  TH2D* h_LocalYVSGlobalZL2;
+
+  TH2D* h_LocalXVSGlobalXYIPl;
+  TH2D* h_LocalXVSGlobalXYI3D;
+  TH2D* h_LocalXVSGlobalXYBL;
+  TH2D* h_LocalXVSGlobalXYL1;
+  TH2D* h_LocalXVSGlobalXYL2;
 
 //  TProfile2D*  h_ToTvsLocalXYIPl_normalized;
 //  TProfile2D*  h_ToTvsLocalXYBL_normalized;
@@ -419,6 +431,18 @@ struct PixelClusterHists
     h_ToTIPl_highT =  new TH1D( name + "IPlhighT", "IBL Planar Cluster ToT high threshold region; #ToT; #Hits", 160, 0., 40.);
     h_ToTI_darkyellow =  new TH1D( name + "IBLPlanarClusterToT dark yellow region", "IBL Planar Cluster ToT; #ToT; #Hits", 40, 0., 40.);
 
+    h_LocalYVSGlobalZIPl = new TH2D( name + "LocalYVSGlobalZIPl", "Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits", 80, -40., 40., 2000, -1000.,1000. );
+    h_LocalYVSGlobalZI3D = new TH2D( name + "LocalYVSGlobalZI3D", "Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits", 80, -40., 40., 2000, -1000.,1000. );
+    h_LocalYVSGlobalZBL = new TH2D( name + "LocalYVSGlobalZBL", "Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits", 12, -2., 10., 2000, -1000.,1000. );
+    h_LocalYVSGlobalZL1 = new TH2D( name + "LocalYVSGlobalZL1", "Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits", 12, -2., 10., 2000, -1000.,1000. );
+    h_LocalYVSGlobalZL2 = new TH2D( name + "LocalYVSGlobalZL2", "Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits", 12, -2., 10., 2000, -1000.,1000. );
+    
+    h_LocalXVSGlobalXYIPl = new TH2D( name + "LocalXVSGlobalXYIPl", "Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 80, -40., 40., 2000, -1000.,1000. );
+    h_LocalXVSGlobalXYI3D = new TH2D( name + "LocalXVSGlobalXYI3D", "Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 80, -40., 40., 2000, -1000.,1000. );
+    h_LocalXVSGlobalXYBL = new TH2D( name + "LocalXVSGlobalXYBL", "Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 12, -2., 10., 2000, -1000.,1000. );
+    h_LocalXVSGlobalXYL1 = new TH2D( name + "LocalXVSGlobalXYL1", "Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 12, -2., 10., 2000, -1000.,1000. );
+    h_LocalXVSGlobalXYL2 = new TH2D( name + "LocalXVSGlobalXYL2", "Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 12, -2., 10., 2000, -1000.,1000. );
+   
     //h_ToTvsLocalXYIPl_normalized = new TProfile2D( name + "PixelsToTVSLocalXYIPl_n","ToT VS LocalX VS LocalY IBL Planar (norm); LocalY; LocalX; ToT; #Hits", 80, -40.,40.,20, -10., 10.);
     //h_ToTvsLocalXYBL_normalized = new TProfile2D(name + "PixelsToTVSLocalXYBL_n","ToT VS LocalX VS LocalY BL (norm); LocalY; LocalX; ToT; #Hits", 24, -2.,10.,20, -10., 10.);
     //h_EtaSizevsLocalXYIPl_normalized = new TProfile2D( name + "IBLPlanarEtaWidthVSLocalXY_n","Cluster Eta width IBL Planar (norm) VS Local X VS Local Y;LocalY; LocalX; ClusterEtaWidth", 80, -40.,40.,20, -10., 10.);
@@ -726,6 +750,18 @@ struct PixelClusterHists
     allHists.push_back( h_ToTIPl_lowT);
     allHists.push_back( h_ToTIPl_highT);
     allHists.push_back( h_ToTI_darkyellow);
+
+    allHists.push_back( h_LocalYVSGlobalZIPl );
+    allHists.push_back( h_LocalYVSGlobalZI3D );
+    allHists.push_back( h_LocalYVSGlobalZBL );
+    allHists.push_back( h_LocalYVSGlobalZL1 );
+    allHists.push_back( h_LocalYVSGlobalZL2 );
+
+    allHists.push_back( h_LocalXVSGlobalXYIPl );
+    allHists.push_back( h_LocalXVSGlobalXYI3D );
+    allHists.push_back( h_LocalXVSGlobalXYBL );
+    allHists.push_back( h_LocalXVSGlobalXYL1 );
+    allHists.push_back( h_LocalXVSGlobalXYL2 );
 
   //  allHists.push_back( h_ToTvsLocalXYIPl_normalized);
   //  allHists.push_back( h_ToTvsLocalXYBL_normalized);
@@ -1339,6 +1375,8 @@ struct PixelClusterHists
       h_SizeVSToTI->Fill(tot,size);
       h_GlobalZIPl->Fill(globalz);
       h_LocalYVSXI->Fill(localx,localy);
+      h_LocalYVSGlobalZIPl->Fill(localy,globalz);
+      h_LocalXVSGlobalXYIPl->Fill(localx,sqrt((globalx*globalx)+(globaly*globaly)));
       //if(pt>2000.){
         h_ResiXIPl->Fill(resiX);
         h_ResiYIPl->Fill(resiY);
@@ -1365,6 +1403,8 @@ struct PixelClusterHists
       h_SizeVSToTI3D->Fill(tot,size);
       h_GlobalZI3D->Fill(globalz);
       h_LocalYVSXI3D->Fill(localx,localy);
+      h_LocalYVSGlobalZI3D->Fill(localy,globalz);
+      h_LocalXVSGlobalXYI3D->Fill(localx,sqrt((globalx*globalx)+(globaly*globaly)));
       //if(pt>2000.){
         h_ResiXI3D->Fill(resiX);
         h_ResiYI3D->Fill(resiY);
@@ -1395,7 +1435,8 @@ struct PixelClusterHists
           h_Charge0->Fill(charge);
           h_Size0->Fill(size);
           h_PhiSize0->Fill(phiWidth);
-
+          h_LocalYVSGlobalZBL->Fill(localy,globalz);
+          h_LocalXVSGlobalXYBL->Fill(localx,sqrt((globalx*globalx)+(globaly*globaly)));
           h_EtaSize0->Fill(etaWidth);
           float localytemp = 0;
           if(0<=localy && localy<=7.6) localytemp = localy;
@@ -1414,7 +1455,9 @@ struct PixelClusterHists
           h_Charge1->Fill(charge);
           h_Size1->Fill(size);
           h_PhiSize1->Fill(phiWidth);
-	  float localytemp = 0;
+          h_LocalYVSGlobalZL1->Fill(localy,globalz);
+          h_LocalXVSGlobalXYL1->Fill(localx,sqrt((globalx*globalx)+(globaly*globaly)));
+	        float localytemp = 0;
           if(0<=localy && localy<=7.6) localytemp = localy;
           else if(7.6<localy && localy<=(7.6*2)) localytemp = localy - 7.6;
           else if((7.6*2)<localy && localy<=(7.6*3)) localytemp = localy - (7.6*2);
@@ -1433,7 +1476,9 @@ struct PixelClusterHists
           h_Charge2->Fill(charge);
           h_Size2->Fill(size);
           h_PhiSize2->Fill(phiWidth);
-	  float localytemp = 0;
+          h_LocalYVSGlobalZL2->Fill(localy,globalz);
+          h_LocalXVSGlobalXYL2->Fill(localx,sqrt((globalx*globalx)+(globaly*globaly)));
+	        float localytemp = 0;
           if(0<=localy && localy<=7.6) localytemp = localy;
           else if(7.6<localy && localy<=(7.6*2)) localytemp = localy - 7.6;
           else if((7.6*2)<localy && localy<=(7.6*3)) localytemp = localy - (7.6*2);

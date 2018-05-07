@@ -1,3 +1,3 @@
 TH1D* h1=new TH1D("h1","BL: ToT Profile Y VS LocalY 2015, 2016, 2017",40,-10,10)
-double k=-8.25;int bin=1;
-for(int i=4;i<=37;i++){if(i!=20 && i!=21){double val=OnTrackClustersPixelsToTVSLocalXYBL_pfy->GetBinContent(i);h1->Fill(k,val-30.6308);k+=0.5;h1->SetBinError(bin,0.0001);bin++;}else{k+=0.5;}}
+double k=-8.25;int bin=4;
+for(int i=4;i<=37;i++){if(i!=20 && i!=21){double val=OnTrackClustersPixelsToTVSLocalXYBL_pfy->GetBinContent(i);h1->Fill(k,val-30.6308);k+=0.5;h1->SetBinError(bin,0.0001);bin++;}else{k+=0.5;bin++;}}
