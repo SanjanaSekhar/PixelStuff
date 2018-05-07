@@ -397,23 +397,23 @@ struct PixelClusterHists
     h_ToTVSLocalEtaL1   =  new TH2D( name + "PixelsToTVSLocalEtaL1", "ToT VS Eta Incidence L1; Eta Incidence [rad]; ToT; #Hits", 640, -1.6025, 1.597575,200, -0.5,199.5 );
     h_ToTVSLocalEtaL2   =  new TH2D( name + "PixelsToTVSLocalEtaL2", "ToT VS Eta Incidence L2; Eta Incidence [rad]; ToT; #Hits", 640, -1.6025, 1.597575,200, -0.5,199.5 );
 //===========SS==================================================================================================================================================================================================================
-    h_ToTvsLocalXYIPl = new TProfile2D( name + "PixelsToTVSLocalXYIPl","ToT VS LocalX VS LocalY IBL Planar; LocalY; LocalX; ToT; #Hits", 80, -40.,40.,40, -10., 10.);
-    h_ToTvsLocalXYI3D = new TProfile2D(name + "PixelsToTVSLocalXYI3D","ToT VS LocalX VS LocalY IBL 3D; LocalY; LocalX; ToT; #Hits", 80, -40.,40.,20, -10., 10.);
-    h_ToTvsLocalXYBL = new TProfile2D(name + "PixelsToTVSLocalXYBL","ToT VS LocalX VS LocalY BL; LocalY; LocalX; ToT; #Hits", 60, -2.,10.,40, -10., 10.);
-    h_ToTvsLocalXYL1 = new TProfile2D( name + "PixelsToTVSLocalXYL1","ToT VS LocalX VS LocalY L1; LocalY; LocalX; ToT; #Hits", 60, -2.,10.,40, -10., 10.);
-    h_ToTvsLocalXYL2 = new TProfile2D( name + "PixelsToTVSLocalXYL2","ToT VS LocalX VS LocalY L2; LocalY; LocalX; ToT; #Hits", 60, -2.,10.,40, -10., 10.);
+    h_ToTvsLocalXYIPl = new TProfile2D( name + "PixelsToTVSLocalXYIPl","ToT VS LocalX VS LocalY IBL Planar; LocalY; LocalX; ToT; #Hits", 320, -40.,40.,400, -10., 10.);
+    h_ToTvsLocalXYI3D = new TProfile2D(name + "PixelsToTVSLocalXYI3D","ToT VS LocalX VS LocalY IBL 3D; LocalY; LocalX; ToT; #Hits", 320, -40.,40.,400, -10., 10.);
+    h_ToTvsLocalXYBL = new TProfile2D(name + "PixelsToTVSLocalXYBL","ToT VS LocalX VS LocalY BL; LocalY; LocalX; ToT; #Hits", 60, -2.,10.,400, -10., 10.);
+    h_ToTvsLocalXYL1 = new TProfile2D( name + "PixelsToTVSLocalXYL1","ToT VS LocalX VS LocalY L1; LocalY; LocalX; ToT; #Hits", 60, -2.,10.,400, -10., 10.);
+    h_ToTvsLocalXYL2 = new TProfile2D( name + "PixelsToTVSLocalXYL2","ToT VS LocalX VS LocalY L2; LocalY; LocalX; ToT; #Hits", 60, -2.,10.,400, -10., 10.);
 
-    h_EtaSizevsLocalXYIPl = new TProfile2D( name + "IBLPlanarEtaWidthVSLocalXY","Cluster Eta width IBL Planar VS Local X VS Local Y;LocalY; LocalX; ClusterEtaWidth", 80, -40.,40.,40, -10., 10.);
-    h_EtaSizevsLocalXYI3D = new TProfile2D( name + "IBL3DEtaWidthVSLocalXY","Cluster Eta width IBL 3D VS Local X VS Local Y; LocalY; LocalX; ClusterEtaWidth", 80, -40.,40.,20, -10., 10.);
-    h_EtaSizevsLocalXYBL = new TProfile2D( name + "BLEtaWidthVSLocalXY","Cluster Eta width BL VS Local X VS Local Y;LocalY; LocalX; ClusterEtaWidth", 60, -2.,10.,40, -10., 10.);
-    h_EtaSizevsLocalXYL1 = new TProfile2D( name + "L1EtaWidthVSLocalXY","Cluster Eta width L1 VS Local X VS Local Y;LocalY; LocalX; ClusterEtaWidth",60, -2.,10.,40, -10., 10.);
-    h_EtaSizevsLocalXYL2 = new TProfile2D( name + "L2EtaWidthVSLocalXY","Cluster Eta width L2 VS Local X VS Local Y; LocalY; LocalX; ClusterEtaWidth",60, -2.,10.,40, -10., 10.);
+    h_EtaSizevsLocalXYIPl = new TProfile2D( name + "IBLPlanarEtaWidthVSLocalXY","Cluster Eta width IBL Planar VS Local X VS Local Y;LocalY; LocalX; ClusterEtaWidth", 320, -40.,40.,400, -10., 10.);
+    h_EtaSizevsLocalXYI3D = new TProfile2D( name + "IBL3DEtaWidthVSLocalXY","Cluster Eta width IBL 3D VS Local X VS Local Y; LocalY; LocalX; ClusterEtaWidth", 320, -40.,40.,400, -10., 10.);
+    h_EtaSizevsLocalXYBL = new TProfile2D( name + "BLEtaWidthVSLocalXY","Cluster Eta width BL VS Local X VS Local Y;LocalY; LocalX; ClusterEtaWidth", 60, -2.,10.,400, -10., 10.);
+    h_EtaSizevsLocalXYL1 = new TProfile2D( name + "L1EtaWidthVSLocalXY","Cluster Eta width L1 VS Local X VS Local Y;LocalY; LocalX; ClusterEtaWidth",60, -2.,10.,400, -10., 10.);
+    h_EtaSizevsLocalXYL2 = new TProfile2D( name + "L2EtaWidthVSLocalXY","Cluster Eta width L2 VS Local X VS Local Y; LocalY; LocalX; ClusterEtaWidth",60, -2.,10.,400, -10., 10.);
 
-    h_PhiSizevsLocalXYIPl = new TProfile2D( name + "IBLPlanarPhiWidthVSLocalXY","Cluster Phi width IBL Planar VS Local X VS Local Y; LocalY; LocalX; ClusterPhiWidth",80, -40.,40.,40, -10., 10.);
-    h_PhiSizevsLocalXYI3D = new TProfile2D( name + "IBL3DPhiWidthVSLocalXY","Cluster Phi width IBL 3D VS Local X VS Local Y; LocalY; LocalX; ClusterPhiWidth",80, -40.,40.,20, -10., 10.);
-    h_PhiSizevsLocalXYBL = new TProfile2D( name + "BLPhiWidthVSLocalXY","Cluster Phi width BL VS Local X VS Local Y; LocalY; LocalX; ClusterPhiWidth",60, -2.,10.,40, -10., 10.);
-    h_PhiSizevsLocalXYL1 = new TProfile2D( name + "L1PhiWidthVSLocalXY","Cluster Phi width L1 VS Local X VS Local Y;LocalY; LocalX; ClusterPhiWidth",60, -2.,10.,40, -10., 10.);
-    h_PhiSizevsLocalXYL2 = new TProfile2D( name + "L2PhiWidthVSLocalXY","Cluster Phi width L2 VS Local X VS Local Y; LocalY; LocalX; ClusterPhiWidth",60, -2.,10.,40, -10., 10.);
+    h_PhiSizevsLocalXYIPl = new TProfile2D( name + "IBLPlanarPhiWidthVSLocalXY","Cluster Phi width IBL Planar VS Local X VS Local Y; LocalY; LocalX; ClusterPhiWidth",320, -40.,40.,400, -10., 10.);
+    h_PhiSizevsLocalXYI3D = new TProfile2D( name + "IBL3DPhiWidthVSLocalXY","Cluster Phi width IBL 3D VS Local X VS Local Y; LocalY; LocalX; ClusterPhiWidth",320, -40.,40.,400, -10., 10.);
+    h_PhiSizevsLocalXYBL = new TProfile2D( name + "BLPhiWidthVSLocalXY","Cluster Phi width BL VS Local X VS Local Y; LocalY; LocalX; ClusterPhiWidth",60, -2.,10.,400, -10., 10.);
+    h_PhiSizevsLocalXYL1 = new TProfile2D( name + "L1PhiWidthVSLocalXY","Cluster Phi width L1 VS Local X VS Local Y;LocalY; LocalX; ClusterPhiWidth",60, -2.,10.,400, -10., 10.);
+    h_PhiSizevsLocalXYL2 = new TProfile2D( name + "L2PhiWidthVSLocalXY","Cluster Phi width L2 VS Local X VS Local Y; LocalY; LocalX; ClusterPhiWidth",60, -2.,10.,400, -10., 10.);
 
     h_ToTIPl_lowT =  new TH1D( name + "IPllowT", "IBL Planar Cluster ToT low threshold region; #ToT; #Hits", 160, 0., 40.);
     h_ToTIPl_highT =  new TH1D( name + "IPlhighT", "IBL Planar Cluster ToT high threshold region; #ToT; #Hits", 160, 0., 40.);
