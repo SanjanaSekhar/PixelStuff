@@ -431,17 +431,17 @@ struct PixelClusterHists
     h_ToTIPl_highT =  new TH1D( name + "IPlhighT", "IBL Planar Cluster ToT high threshold region; #ToT; #Hits", 160, 0., 40.);
     h_ToTI_darkyellow =  new TH1D( name + "IBLPlanarClusterToT dark yellow region", "IBL Planar Cluster ToT; #ToT; #Hits", 40, 0., 40.);
 
-    h_LocalYVSGlobalZIPl = new TH2D( name + "LocalYVSGlobalZIPl", "Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits", 80, -40., 40., 2000, -1000.,1000. );
-    h_LocalYVSGlobalZI3D = new TH2D( name + "LocalYVSGlobalZI3D", "Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits", 80, -40., 40., 2000, -1000.,1000. );
-    h_LocalYVSGlobalZBL = new TH2D( name + "LocalYVSGlobalZBL", "Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits", 12, -2., 10., 2000, -1000.,1000. );
-    h_LocalYVSGlobalZL1 = new TH2D( name + "LocalYVSGlobalZL1", "Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits", 12, -2., 10., 2000, -1000.,1000. );
-    h_LocalYVSGlobalZL2 = new TH2D( name + "LocalYVSGlobalZL2", "Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits", 12, -2., 10., 2000, -1000.,1000. );
+    h_LocalYVSGlobalZIPl = new TH2D( name + "LocalYVSGlobalZIPl", "IBL Planar: Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits", 320, -40., 40., 1200, -600.,600. );
+    h_LocalYVSGlobalZI3D = new TH2D( name + "LocalYVSGlobalZI3D", "IBL 3D: Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits", 320, -40., 40.,1200, -600.,600. );
+    h_LocalYVSGlobalZBL = new TH2D( name + "LocalYVSGlobalZBL", "BL: Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits",400, -40., 40., 1200, -600.,600.);
+    h_LocalYVSGlobalZL1 = new TH2D( name + "LocalYVSGlobalZL1", "L1: Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits",400, -40., 40., 1200, -600.,600. );
+    h_LocalYVSGlobalZL2 = new TH2D( name + "LocalYVSGlobalZL2", "L2: Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits",400, -40., 40., 1200, -600.,600. );
     
-    h_LocalXVSGlobalXYIPl = new TH2D( name + "LocalXVSGlobalXYIPl", "Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 80, -40., 40., 2000, -1000.,1000. );
-    h_LocalXVSGlobalXYI3D = new TH2D( name + "LocalXVSGlobalXYI3D", "Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 80, -40., 40., 2000, -1000.,1000. );
-    h_LocalXVSGlobalXYBL = new TH2D( name + "LocalXVSGlobalXYBL", "Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 12, -2., 10., 2000, -1000.,1000. );
-    h_LocalXVSGlobalXYL1 = new TH2D( name + "LocalXVSGlobalXYL1", "Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 12, -2., 10., 2000, -1000.,1000. );
-    h_LocalXVSGlobalXYL2 = new TH2D( name + "LocalXVSGlobalXYL2", "Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 12, -2., 10., 2000, -1000.,1000. );
+    h_LocalXVSGlobalXYIPl = new TH2D( name + "LocalXVSGlobalXYIPl", "IBL Planar: Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 400, -10., 10., 1200, -600.,600. );
+    h_LocalXVSGlobalXYI3D = new TH2D( name + "LocalXVSGlobalXYI3D", "IBL 3D: Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits",  400, -10., 10., 1200, -600.,600. );
+    h_LocalXVSGlobalXYBL = new TH2D( name + "LocalXVSGlobalXYBL", "BL: Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 400, -10., 10., 1200, -600.,600. );
+    h_LocalXVSGlobalXYL1 = new TH2D( name + "LocalXVSGlobalXYL1", "L1: Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 400, -10., 10.,1200, -600.,600. );
+    h_LocalXVSGlobalXYL2 = new TH2D( name + "LocalXVSGlobalXYL2", "L2: Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits",  400, -10., 10., 1200, -600.,600. );
    
     //h_ToTvsLocalXYIPl_normalized = new TProfile2D( name + "PixelsToTVSLocalXYIPl_n","ToT VS LocalX VS LocalY IBL Planar (norm); LocalY; LocalX; ToT; #Hits", 80, -40.,40.,20, -10., 10.);
     //h_ToTvsLocalXYBL_normalized = new TProfile2D(name + "PixelsToTVSLocalXYBL_n","ToT VS LocalX VS LocalY BL (norm); LocalY; LocalX; ToT; #Hits", 24, -2.,10.,20, -10., 10.);
