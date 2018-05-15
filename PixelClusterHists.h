@@ -1,6 +1,6 @@
 #ifndef PixelClusterHists_h
 #define PixelClusterHists_h
-
+#define PI 3.14159265
 #include <iostream>
 #include "TH1D.h"
 #include "TH2D.h"
@@ -125,6 +125,9 @@ struct PixelClusterHists
   TH2D* h_LocalXVSGlobalXYBL;
   TH2D* h_LocalXVSGlobalXYL1;
   TH2D* h_LocalXVSGlobalXYL2;
+
+  TH2D* h_LocalXVSRIPl;
+  TH2D* h_LocalXVSRI3D;
 
 //  TProfile2D*  h_ToTvsLocalXYIPl_normalized;
 //  TProfile2D*  h_ToTvsLocalXYBL_normalized;
@@ -443,6 +446,8 @@ struct PixelClusterHists
     h_LocalXVSGlobalXYL1 = new TH2D( name + "LocalXVSGlobalXYL1", "L1: Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 400, -10., 10.,1200, -600.,600. );
     h_LocalXVSGlobalXYL2 = new TH2D( name + "LocalXVSGlobalXYL2", "L2: Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits",  400, -10., 10., 1200, -600.,600. );
    
+    h_LocalXVSRIPl = new TH2D( name + "LocalXVSRIPl", "IBL Planar: Pixel Cluster Local X VS R; LocalX; R; #Hits", 400, -10., 10., 6000, -600.,600. );
+    h_LocalXVSRI3D = new TH2D( name + "LocalXVSRI3D", "IBL 3D: Pixel Cluster Local X VS R; LocalX; R; #Hits",  400, -10., 10., 6000, -600.,600. );
     //h_ToTvsLocalXYIPl_normalized = new TProfile2D( name + "PixelsToTVSLocalXYIPl_n","ToT VS LocalX VS LocalY IBL Planar (norm); LocalY; LocalX; ToT; #Hits", 80, -40.,40.,20, -10., 10.);
     //h_ToTvsLocalXYBL_normalized = new TProfile2D(name + "PixelsToTVSLocalXYBL_n","ToT VS LocalX VS LocalY BL (norm); LocalY; LocalX; ToT; #Hits", 24, -2.,10.,20, -10., 10.);
     //h_EtaSizevsLocalXYIPl_normalized = new TProfile2D( name + "IBLPlanarEtaWidthVSLocalXY_n","Cluster Eta width IBL Planar (norm) VS Local X VS Local Y;LocalY; LocalX; ClusterEtaWidth", 80, -40.,40.,20, -10., 10.);
@@ -762,6 +767,9 @@ struct PixelClusterHists
     allHists.push_back( h_LocalXVSGlobalXYBL );
     allHists.push_back( h_LocalXVSGlobalXYL1 );
     allHists.push_back( h_LocalXVSGlobalXYL2 );
+
+    allHists.push_back( h_LocalXVSRIPl );
+    allHists.push_back( h_LocalXVSRI3D );
 
   //  allHists.push_back( h_ToTvsLocalXYIPl_normalized);
   //  allHists.push_back( h_ToTvsLocalXYBL_normalized);
@@ -1377,7 +1385,8 @@ struct PixelClusterHists
       h_LocalYVSXI->Fill(localx,localy);
       h_LocalYVSGlobalZIPl->Fill(localy,globalz);
       h_LocalXVSGlobalXYIPl->Fill(localx,sqrt((globalx*globalx)+(globaly*globaly)));
-      //if(pt>2000.){
+      h_LocalXVSRIPl->Fill(localx,sqrt((33*33)+(localx*localx)+(66*localx*sin(14.*(PI/180.)))));
+//if(pt>2000.){
         h_ResiXIPl->Fill(resiX);
         h_ResiYIPl->Fill(resiY);
         h_PullXIPl->Fill(pullX);
@@ -1405,6 +1414,7 @@ struct PixelClusterHists
       h_LocalYVSXI3D->Fill(localx,localy);
       h_LocalYVSGlobalZI3D->Fill(localy,globalz);
       h_LocalXVSGlobalXYI3D->Fill(localx,sqrt((globalx*globalx)+(globaly*globaly)));
+      h_LocalXVSRIPl->Fill(localx,sqrt((33*33)+(localx*localx)+(66*localx*sin(14.*(PI/180.)))));
       //if(pt>2000.){
         h_ResiXI3D->Fill(resiX);
         h_ResiYI3D->Fill(resiY);
