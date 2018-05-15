@@ -437,8 +437,8 @@ struct PixelClusterHists
     h_LocalYVSGlobalZL1 = new TH2D( name + "LocalYVSGlobalZL1", "L1: Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits",400, -40., 40., 1200, -600.,600. );
     h_LocalYVSGlobalZL2 = new TH2D( name + "LocalYVSGlobalZL2", "L2: Pixel Cluster Local Y VS Global Z; LocalY; GLobalZ; #Hits",400, -40., 40., 1200, -600.,600. );
     
-    h_LocalXVSGlobalXYIPl = new TH2D( name + "LocalXVSGlobalXYIPl", "IBL Planar: Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 400, -10., 10., 1200, -600.,600. );
-    h_LocalXVSGlobalXYI3D = new TH2D( name + "LocalXVSGlobalXYI3D", "IBL 3D: Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits",  400, -10., 10., 1200, -600.,600. );
+    h_LocalXVSGlobalXYIPl = new TH2D( name + "LocalXVSGlobalXYIPl", "IBL Planar: Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 400, -10., 10., 6000, -600.,600. );
+    h_LocalXVSGlobalXYI3D = new TH2D( name + "LocalXVSGlobalXYI3D", "IBL 3D: Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits",  400, -10., 10., 6000, -600.,600. );
     h_LocalXVSGlobalXYBL = new TH2D( name + "LocalXVSGlobalXYBL", "BL: Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 400, -10., 10., 1200, -600.,600. );
     h_LocalXVSGlobalXYL1 = new TH2D( name + "LocalXVSGlobalXYL1", "L1: Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits", 400, -10., 10.,1200, -600.,600. );
     h_LocalXVSGlobalXYL2 = new TH2D( name + "LocalXVSGlobalXYL2", "L2: Pixel Cluster Local X VS Global SQRT(X^2+Y^2); LocalX; Global SQRT(X^2+Y^2); #Hits",  400, -10., 10., 1200, -600.,600. );
